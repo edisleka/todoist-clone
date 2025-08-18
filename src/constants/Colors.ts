@@ -6,6 +6,8 @@ export const Colors = {
   dark: '#2B2D42', // Rich charcoal (luxury dark)
   lightText: '#8D99AE', // Muted gray-blue (subtle)
   lightBorder: '#E0E0E0', // Soft border for premium feel
+  success: '#00C853',
+  provider: '#FFFFFF',
 }
 
 export const DATE_COLORS = {
