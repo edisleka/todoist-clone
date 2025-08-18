@@ -1,9 +1,12 @@
 import { Stack } from 'expo-router'
+import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 export default function AppLayout() {
   return (
-    <Stack>
-      <Stack.Screen name='index' options={{ headerShown: false }} />
+    <Stack
+      screenOptions={{ contentStyle: { backgroundColor: Colors.background } }}
+    >
+      <Stack.Screen name='(protected)' options={{ headerShown: false }} />
     </Stack>
   )
 }
