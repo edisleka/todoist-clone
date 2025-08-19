@@ -1,6 +1,6 @@
-import { Colors } from '@constants/Colors'
+import { Colors } from '@/constants/Colors'
+import { ButtonProps } from '@/types/button/button'
 import { Ionicons } from '@expo/vector-icons'
-import { ButtonProps } from '@types/button/button'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 
 export function Button({

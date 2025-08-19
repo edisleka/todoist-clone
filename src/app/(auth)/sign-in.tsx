@@ -1,6 +1,6 @@
-import { SocialProvider } from '@components/auth/SocialProvider'
-import { Colors } from '@constants/Colors'
-import { Button } from '@ui/Button'
+import { SocialProvider } from '@/components/auth/SocialProvider'
+import { Button } from '@/components/ui/Button'
+import { Colors } from '@/constants/Colors'
 import { Image } from 'expo-image'
 import * as WebBrowser from 'expo-web-browser'
 import { Text, View } from 'react-native'
@@ -38,12 +38,14 @@ export default function SignInScreen() {
           strategy='oauth_google'
           icon='logo-google'
           title='Continue with Google'
+          titleLoading='Signing in with Google...'
         />
 
         <SocialProvider
           strategy='oauth_apple'
           icon='logo-apple'
           title='Continue with Apple'
+          titleLoading='Signing in with Apple...'
         />
         <Button title='Continue with Email' icon='mail' theme='provider' />
 

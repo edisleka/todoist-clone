@@ -1,13 +1,19 @@
 import { Tabs } from '@/components/tabs/Tabs'
+import { Colors } from '@/constants/Colors'
 
 export default function TabLayout() {
   return (
-    <Tabs>
+    <Tabs
+      hapticFeedbackEnabled
+      screenOptions={{
+        tabBarActiveTintColor: Colors.primary,
+      }}
+    >
       <Tabs.Screen
         name='today'
         options={{
           title: 'Today',
-          tabBarIcon: ({ focused }) =>
+          tabBarIcon: ({ focused }: { focused: boolean }) =>
             focused
               ? require('@img/moment-fill.png')
               : require('@img/moment.png'),
@@ -17,7 +23,7 @@ export default function TabLayout() {
         name='upcoming'
         options={{
           title: 'Upcoming',
-          tabBarIcon: ({ focused }) =>
+          tabBarIcon: ({ focused }: { focused: boolean }) =>
             focused
               ? require('@img/calendar-fill.png')
               : require('@img/calendar.png'),
@@ -27,7 +33,7 @@ export default function TabLayout() {
         name='search'
         options={{
           title: 'Search',
-          tabBarIcon: ({ focused }) =>
+          tabBarIcon: ({ focused }: { focused: boolean }) =>
             focused
               ? require('@img/magnifying-glass-fill.png')
               : require('@img/magnifying-glass.png'),
@@ -37,7 +43,7 @@ export default function TabLayout() {
         name='browse'
         options={{
           title: 'Browse',
-          tabBarIcon: ({ focused }) =>
+          tabBarIcon: ({ focused }: { focused: boolean }) =>
             focused
               ? require('@img/google-docs-fill.png')
               : require('@img/google-docs.png'),

@@ -1,5 +1,5 @@
+import { SocialProviderProps } from '@/types/auth/socialProvider'
 import { useSSO } from '@clerk/clerk-expo'
-import { SocialProviderProps } from '@types/auth/socialProvider'
 import * as AuthSession from 'expo-auth-session'
 import * as WebBrowser from 'expo-web-browser'
 import { useCallback, useEffect, useState } from 'react'
@@ -17,7 +17,12 @@ export const useWarmUpBrowser = () => {
 
 WebBrowser.maybeCompleteAuthSession()
 
-export function SocialProvider({ strategy, icon, title }: SocialProviderProps) {
+export function SocialProvider({
+  strategy,
+  icon,
+  title,
+  titleLoading,
+}: SocialProviderProps) {
   useWarmUpBrowser()
   const { startSSOFlow } = useSSO()
   const [isLoading, setIsLoading] = useState(false)
@@ -45,7 +50,7 @@ export function SocialProvider({ strategy, icon, title }: SocialProviderProps) {
         onPress={onPress}
         theme='provider'
         title={title}
-        titleLoading={`Signing in with ${title}...`}
+        titleLoading={titleLoading}
         icon={icon}
         isLoading={isLoading}
       />

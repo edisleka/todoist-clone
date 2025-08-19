@@ -1,29 +1,37 @@
+import { Colors } from '@/constants/Colors'
 import { ClerkProvider, useAuth } from '@clerk/clerk-expo'
 import { tokenCache } from '@clerk/clerk-expo/token-cache'
-import { Colors } from '@constants/Colors'
 import { useOnboardingStore } from '@store/onboardingStore'
 import { Stack } from 'expo-router'
-import { useMemo } from 'react'
 import { ActivityIndicator, View } from 'react-native'
 
 const InitialLayout = () => {
   const { isSignedIn, isLoaded } = useAuth()
-  const { hasCompletedOnboarding, pendingVerification } = useOnboardingStore()
+  const { hasCompletedOnboarding } = useOnboardingStore()
 
-  const navigationState = useMemo(() => {
-    const showOnboarding = !hasCompletedOnboarding && !isSignedIn
-    const showAuth = !isSignedIn && hasCompletedOnboarding
-    const showProtected =
-      !!isSignedIn && hasCompletedOnboarding && !pendingVerification
+  const showOnboarding = !hasCompletedOnboarding && !isSignedIn
+  const showAuth = !isSignedIn && hasCompletedOnboarding
+  const showProtected = isSignedIn && hasCompletedOnboarding
 
-    return {
-      showOnboarding,
-      showAuth,
-      showProtected,
-    }
-  }, [hasCompletedOnboarding, isSignedIn, pendingVerification])
+  // console.log('showOnboarding', showOnboarding)
+  // console.log('showAuth', showAuth)
+  // console.log('showProtected', showProtected)
+  // console.log('isLoaded', isLoaded)
+  console.log('isSignedIn', isSignedIn)
 
-  const { showOnboarding, showAuth, showProtected } = navigationState
+  // const navigationState = useMemo(() => {
+  //   const showOnboarding = !hasCompletedOnboarding && !isSignedIn
+  //   const showAuth = !isSignedIn && hasCompletedOnboarding
+  //   const showProtected = !!isSignedIn && hasCompletedOnboarding
+
+  //   return {
+  //     showOnboarding,
+  //     showAuth,
+  //     showProtected,
+  //   }
+  // }, [hasCompletedOnboarding, isSignedIn])
+
+  // const { showOnboarding, showAuth, showProtected } = navigationState
 
   if (!isLoaded) {
     return (
@@ -41,7 +49,7 @@ const InitialLayout = () => {
       <Stack.Protected guard={showAuth}>
         <Stack.Screen name='(auth)' options={{ headerShown: false }} />
       </Stack.Protected>
-      <Stack.Protected guard={showProtected}>
+      <Stack.Protected guard={!!showProtected}>
         <Stack.Screen name='(app)' options={{ headerShown: false }} />
       </Stack.Protected>
     </Stack>

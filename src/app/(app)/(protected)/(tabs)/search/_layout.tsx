@@ -1,9 +1,21 @@
+import { Colors } from '@/constants/Colors'
 import { Stack } from 'expo-router'
 
-export default function BrowseLayout() {
+export default function SearchLayout() {
   return (
-    <Stack>
-      <Stack.Screen name='index' options={{ headerShown: false }} />
+    <Stack
+      screenOptions={{
+        headerShadowVisible: false,
+        contentStyle: { backgroundColor: Colors.background },
+      }}
+    >
+      <Stack.Screen
+        name='index'
+        options={{
+          title: 'Search',
+          headerTitleAlign: 'center',
+        }}
+      />
     </Stack>
   )
 }

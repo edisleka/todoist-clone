@@ -1,9 +1,13 @@
-import { Text, View } from 'react-native'
+import { Fab } from '@/components/ui/Fab'
+import { ScrollView, Text } from 'react-native'
 
 export default function SearchScreen() {
   return (
-    <View>
-      <Text>Search Screen</Text>
-    </View>
+    <>
+      <ScrollView>
+        <Text>Search Screen</Text>
+      </ScrollView>
+      <Fab />
+    </>
   )
 }

@@ -5,4 +5,5 @@ export interface SocialProviderProps {
   strategy: OAuthStrategy
   icon: keyof typeof Ionicons.glyphMap
   title?: string
+  titleLoading?: string
 }
