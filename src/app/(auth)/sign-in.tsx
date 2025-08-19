@@ -23,15 +23,15 @@ export default function SignInScreen() {
         source={require('@img/todoist-logo.png')}
         style={{
           height: 40,
-          resizeMode: 'contain',
         }}
+        contentFit='contain'
       />
       <Image
         source={require('@img/login.png')}
         style={{
           height: 280,
-          resizeMode: 'contain',
         }}
+        contentFit='contain'
       />
       <View style={{ gap: 20, marginHorizontal: 40 }}>
         <SocialProvider
